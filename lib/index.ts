@@ -1,14 +1,16 @@
-import { Elysia } from "elysia";
-import { authController } from "./auth/controller";
-import { rateLimit } from "elysia-rate-limit";
+import { auth } from "auth/index";
+import { authController } from "auth/controller";
 import cors from "@elysiajs/cors";
-import { auth } from "./auth";
+import { Elysia } from "elysia";
+import { rateLimit } from "elysia-rate-limit";
+import { swaggerDocs } from "docs/index";
 
 const app = new Elysia()
-  .use(cors())
+  .use(auth)
   .use(authController().jwt())
-  .use(rateLimit())
-  .use(auth);
+  .use(cors())
+  .use(swaggerDocs)
+  .use(rateLimit());
 
 app.listen(8080);
 
