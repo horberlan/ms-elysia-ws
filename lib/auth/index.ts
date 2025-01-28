@@ -1,6 +1,9 @@
 import { Elysia, StatusMap } from "elysia";
 
-const auth = new Elysia({ prefix: "/auth" })
+export { auth, authType };
+
+const auth = new Elysia({ prefix: "/auth", tags: ["Auth"] })
+
   .get("/", () => "Hi from auth 🦊")
   .get("/sign/:name", async ({ jwt, cookie: { auth }, params }) => {
     auth.set({
@@ -24,5 +27,4 @@ const auth = new Elysia({ prefix: "/auth" })
     return `Hello ${profile.name}`;
   });
 
-export { auth };
-export type StartServerType = typeof auth;
+type authType = typeof auth;

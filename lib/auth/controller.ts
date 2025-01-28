@@ -1,7 +1,9 @@
 import { jwt } from "@elysiajs/jwt";
 import { env } from "node:process";
 
-export const authController = () => {
+export { authController };
+
+const authController = () => {
   return {
     jwt: () => {
       return jwt({
