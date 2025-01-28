@@ -3,10 +3,14 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch lib/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/cors": "^1.2.0",
+    "@elysiajs/jwt": "^1.2.0",
+    "elysia": "latest",
+    "elysia-rate-limit": "^4.1.0"
   },
   "devDependencies": {
     "bun-types": "latest"
